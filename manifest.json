@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Sparx Science Bot",
+  "version": "1.0.0",
+  "description": "AI-powered Sparx Science assistant. Educational purposes only.",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": [
+    "https://*.sparxscience.com/*",
+    "https://openrouter.ai/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": { "128": "icons/icon128.png" }
+  },
+  "content_scripts": [{
+    "matches": ["https://*.sparxscience.com/*"],
+    "js": ["content.js"],
+    "css": ["content.css"],
+    "run_at": "document_idle"
+  }],
+  "background": { "service_worker": "background.js" },
+  "icons": { "128": "icons/icon128.png" }
+}
