@@ -59,7 +59,7 @@ $('solveBtn').addEventListener('click', () => {
   chrome.tabs.query({ active: true, currentWindow: true }, ts => {
     if (!ts[0]?.id) { status('err', '❌ No active tab'); return; }
     const url = ts[0].url || '';
-    if (!url.includes('sparxscience.com') && !url.includes('sparx-learning.com')) {
+    if (!url.includes('science.sparx-learning.com') && !url.includes('sparxscience.com')) {
       status('err', '❌ Not on Sparx Science!'); return;
     }
     chrome.tabs.sendMessage(ts[0].id, { type: 'SOLVE_NOW' }, () => {
