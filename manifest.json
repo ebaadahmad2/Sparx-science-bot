@@ -5,8 +5,8 @@
   "description": "AI Sparx Science assistant. Password protected.",
   "permissions": ["storage", "activeTab", "scripting"],
   "host_permissions": [
+    "https://science.sparx-learning.com/*",
     "https://*.sparxscience.com/*",
-    "https://*.sparx-learning.com/*",
     "https://openrouter.ai/*"
   ],
   "action": {
@@ -15,8 +15,8 @@
   },
   "content_scripts": [{
     "matches": [
-      "https://*.sparxscience.com/*",
-      "https://*.sparx-learning.com/*"
+      "https://science.sparx-learning.com/*",
+      "https://*.sparxscience.com/*"
     ],
     "js": ["content.js"],
     "css": ["content.css"],
