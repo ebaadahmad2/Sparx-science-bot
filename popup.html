@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sparx Science Bot</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{width:300px;font-family:system-ui,sans-serif;background:#0f172a;color:#f1f5f9;font-size:13px}
+  .hdr{background:linear-gradient(135deg,#1e1b4b,#312e81);padding:14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #334155}
+  .logo{font-size:22px}
+  .hdr h1{font-size:14px;font-weight:700;color:#a5b4fc}
+  .hdr p{font-size:10px;color:#64748b}
+  .sec{padding:12px 14px;border-bottom:1px solid #1e293b}
+  .stitle{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#475569;margin-bottom:8px}
+  label{display:block;font-size:12px;color:#94a3b8;margin-bottom:3px}
+  input,select{width:100%;padding:7px 9px;background:#1e293b;border:1px solid #334155;border-radius:7px;color:#f1f5f9;font-size:12px;outline:none}
+  input:focus,select:focus{border-color:#6366f1}
+  .iw{position:relative}
+  .iw button{position:absolute;right:7px;top:50%;transform:translateY(-50%);background:none;border:none;color:#475569;cursor:pointer;font-size:13px}
+  .gap{height:8px}
+  .row{display:flex;align-items:center;justify-content:space-between;padding:6px 0}
+  .row span{font-size:12px;color:#94a3b8}
+  .row small{font-size:10px;color:#475569;display:block;margin-top:1px}
+  .sw{position:relative;width:34px;height:19px;flex-shrink:0}
+  .sw input{opacity:0;width:0;height:0}
+  .sl{position:absolute;inset:0;background:#334155;border-radius:20px;cursor:pointer;transition:.2s}
+  .sl::before{content:'';position:absolute;width:13px;height:13px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s}
+  input:checked+.sl{background:#6366f1}
+  input:checked+.sl::before{transform:translateX(15px)}
+  .btn{width:100%;padding:9px;border-radius:7px;border:none;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;margin-bottom:6px}
+  .btn-s{background:#14532d;color:#86efac;border:1px solid #166534}
+  .btn-s:hover{background:#166534}
+  .btn-n{background:#1e293b;color:#a5b4fc;border:1px solid #334155}
+  .btn-n:hover{background:#334155}
+  .sbar{padding:8px 14px;background:#020617;display:flex;align-items:center;gap:6px;font-size:11px;color:#475569}
+  .dot{width:7px;height:7px;border-radius:50%;background:#334155;flex-shrink:0}
+  .dot.ok{background:#22c55e;box-shadow:0 0 5px #22c55e}
+  .dot.err{background:#ef4444}
+  .warn{background:#1c0a00;border:1px solid #7c2d12;border-radius:7px;padding:9px;font-size:11px;color:#fed7aa;line-height:1.5}
+  .hint{font-size:10px;color:#475569;margin-top:3px}
+  .hint a{color:#6366f1;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="logo">🧪</div>
+  <div><h1>Sparx Science Bot</h1><p>AI homework assistant</p></div>
+</div>
+<div class="sec">
+  <div class="stitle">🔑 OpenRouter API</div>
+  <label>API Key</label>
+  <div class="iw">
+    <input type="password" id="apiKey" placeholder="sk-or-v1-…">
+    <button id="eye">👁</button>
+  </div>
+  <div class="hint">Free key → <a href="https://openrouter.ai/keys" target="_blank">openrouter.ai/keys</a></div>
+  <div class="gap"></div>
+  <label>Model</label>
+  <select id="model">
+    <option value="google/gemini-flash-1.5">Gemini Flash 1.5 (Free ⚡)</option>
+    <option value="google/gemini-2.0-flash-exp:free">Gemini 2.0 Flash (Free)</option>
+    <option value="meta-llama/llama-3.1-8b-instruct:free">Llama 3.1 8B (Free)</option>
+    <option value="mistralai/mistral-7b-instruct:free">Mistral 7B (Free)</option>
+    <option value="openai/gpt-4o-mini">GPT-4o Mini (Paid)</option>
+  </select>
+</div>
+<div class="sec">
+  <div class="stitle">⚙️ Options</div>
+  <div class="row">
+    <div><span>Auto Mode</span><small>Solve when question changes</small></div>
+    <label class="sw"><input type="checkbox" id="autoMode"><span class="sl"></span></label>
+  </div>
+  <div class="row">
+    <div><span>Auto Submit</span><small>Click submit automatically</small></div>
+    <label class="sw"><input type="checkbox" id="autoSubmit"><span class="sl"></span></label>
+  </div>
+</div>
+<div class="sec">
+  <button class="btn btn-s" id="save">💾 Save Settings</button>
+  <button class="btn btn-n" id="solve">⚡ Solve Current Question</button>
+</div>
+<div class="sec">
+  <div class="warn">⚠️ For educational purposes only. You are fully responsible for your use.</div>
+</div>
+<div class="sbar"><div class="dot" id="dot"></div><span id="msg">Not saved yet</span></div>
+<script src="popup.js"></script>
+</body>
+</html>
